@@ -22,11 +22,13 @@ Server = module.exports = Class.extend({
 		var Express = require('express');
 		var express = Express();
 		var server = null;
-		if (false) {
+		if (true) {
 			var directory = homedir() +  '/workspace/godsend-trust-output';
 			extra.ensureDirSync(directory);
-			console.log(path.join(directory, './server.key.private.pem'));
-			console.log(path.join(directory, './server.cert.pem'));
+			var key = fs.readFileSync(path.join(directory, './server.key.private.pem'));
+			var cert = fs.readFileSync(path.join(directory, './server.cert.pem'));
+			console.log('key: ' + key);
+			console.log('cert: ' + cert);
 			server = require('https').createServer({
 				key: fs.readFileSync(path.join(directory, './server.key.private.pem')),
 				cert: fs.readFileSync(path.join(directory, './server.cert.pem')),
