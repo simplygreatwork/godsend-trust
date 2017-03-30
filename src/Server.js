@@ -22,7 +22,7 @@ Server = module.exports = Class.extend({
 		var Express = require('express');
 		var express = Express();
 		var server = null;
-		if (true) {
+		if (false) {
 			var directory = homedir() +  '/workspace/godsend-trust-output';
 			extra.ensureDirSync(directory);
 			console.log(path.join(directory, './server.key.private.pem'));
@@ -36,8 +36,8 @@ Server = module.exports = Class.extend({
 			server = require('http').createServer(express);
 		}
 		server.listen(8080, process.env.IP);
-      express.use('/', Express.static(path.join(process.env.PWD, './')));
-      express.use('/', Express.serveIndex(path.join(process.env.PWD, './'), {
+      express.use('/', Express.static(path.join(process.env.PWD, './www')));
+      express.use('/', Express.serveIndex(path.join(process.env.PWD, './www'), {
          'icons': true
       }));
 		var io = require('socket.io').listen(server);
